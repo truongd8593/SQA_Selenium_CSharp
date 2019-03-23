@@ -37,6 +37,7 @@ namespace SeleniumHello
         [Test]
         public void OpenChromeUrl()
         {
+            driver.Manage().Window.Maximize();
             driver.Url = "http://forums.silverfrost.com";
         }
 
@@ -61,6 +62,7 @@ namespace SeleniumHello
         [Test]
         public void ClickRepo()
         {
+            driver.Manage().Window.Maximize();
             driver.Url = "https://github.com/truongd8593";
 
             const int timeoutSeconds = 15;
@@ -87,6 +89,7 @@ namespace SeleniumHello
         [Test]
         public void GgSearch()
         {
+            driver.Manage().Window.Maximize();
             driver.Url = "https://www.google.com";
 
             IWebElement searchComboBox = driver.FindElement(By.XPath("//*[@class='gLFyf gsfi']"));
