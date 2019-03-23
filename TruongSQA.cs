@@ -10,7 +10,7 @@ namespace SeleniumHello
     [TestClass]
     public class TruongSQA001
     {
-        IWebDriver driver;
+        public IWebDriver driver;
 
         /*Testing open browser and close it*/
 
@@ -79,5 +79,24 @@ namespace SeleniumHello
             driver.Close();
         }
 
+    }
+
+    [TestClass]
+    public class TruongSQA003 : TruongSQA001 
+    {
+        [Test]
+        public void GgSearch()
+        {
+            driver.Url = "https://www.google.com";
+
+            IWebElement searchComboBox = driver.FindElement(By.XPath("//*[@class='gLFyf gsfi']"));
+            searchComboBox.Click();
+            searchComboBox.SendKeys("C# tutorials");
+            System.Threading.Thread.Sleep(1000);
+
+            IWebElement searchButton = driver.FindElement(By.Name("btnK"));
+            searchButton.Click();
+            System.Threading.Thread.Sleep(3000);
+        }
     }
 }
