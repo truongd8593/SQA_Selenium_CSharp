@@ -8,7 +8,7 @@ using NUnit.Framework;
 namespace SeleniumHello
 {
     [TestClass]
-    public class TruongSQA001
+    public class OpenChromeURL
     {
         public IWebDriver driver;
 
@@ -49,7 +49,7 @@ namespace SeleniumHello
     }
 
     [TestClass]
-    public class TruongSQA002
+    public class OpenGitHubRepo
     {
         IWebDriver driver;
         /* Testing open browser at the address of my Github repositories, then click one of them */
@@ -84,8 +84,16 @@ namespace SeleniumHello
     }
 
     [TestClass]
-    public class TruongSQA003 : TruongSQA001 
+    public class GoogleSearch 
     {
+        public IWebDriver driver;
+
+        [SetUp]
+        public void Initialize()
+        {
+            driver = new ChromeDriver();
+        }
+
         [Test]
         public void GgSearch()
         {
@@ -100,6 +108,12 @@ namespace SeleniumHello
             IWebElement searchButton = driver.FindElement(By.Name("btnK"));
             searchButton.Click();
             System.Threading.Thread.Sleep(3000);
+        }
+
+        [TearDown]
+        public void MyFinalize()
+        {
+            driver.Close();
         }
     }
 }
