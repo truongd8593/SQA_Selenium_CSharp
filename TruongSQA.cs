@@ -116,4 +116,77 @@ namespace SeleniumHello
             driver.Close();
         }
     }
+
+    [TestClass]
+    public class RegisterAccountGuru99
+    {
+        public IWebDriver driver;
+
+        [SetUp]
+        public void Initialize()
+        {
+            driver = new ChromeDriver();
+            driver.Manage().Window.Maximize();
+        }
+
+        [Test]
+        public void RegisterAccount()
+        {
+            driver.Url = "http://demo.guru99.com/test/newtours/index.php";
+
+            // Verify web title
+            string title = driver.Title;
+            if (title != "Welcome: Mercury Tours")
+            {
+                MyFinalize();
+            }
+
+            // Click Register
+            IWebElement registerBtn = driver.FindElement(By.LinkText("REGISTER"));
+            registerBtn.Click();
+
+            // Verify new web title
+            title = driver.Title;
+            if (title != "Register: Mercury Tours")
+            {
+                MyFinalize();
+            }
+
+            //Fill in personal information
+            IWebElement firstName = driver.FindElement(By.Name("firstName"));
+            firstName.SendKeys("Truong");
+            IWebElement lastName = driver.FindElement(By.Name("lastName"));
+            lastName.SendKeys("Dang");
+            IWebElement phone = driver.FindElement(By.Name("phone"));
+            phone.SendKeys("012345678");
+            IWebElement userName = driver.FindElement(By.Id("userName"));
+            userName.SendKeys("dangtruong@gmail.com");
+            IWebElement adddress1 = driver.FindElement(By.Name("address1"));
+            adddress1.SendKeys("123 Unkown Street Ward 1");
+            IWebElement city = driver.FindElement(By.Name("city"));
+            city.SendKeys("Asgard");
+            IWebElement state = driver.FindElement(By.Name("state"));
+            state.SendKeys("Asgard");
+            IWebElement postalCode = driver.FindElement(By.Name("postalCode"));
+            postalCode.SendKeys("99999");
+            IWebElement country = driver.FindElement(By.Name("country"));
+            country.SendKeys("VIET NAM");
+
+            IWebElement email = driver.FindElement(By.Name("email"));
+            email.SendKeys("Truong");
+            IWebElement password = driver.FindElement(By.Name("password"));
+            password.SendKeys("123456");
+            password = driver.FindElement(By.Name("confirmPassword"));
+            password.SendKeys("123456");
+
+            IWebElement submitBtn = driver.FindElement(By.Name("submit"));
+            submitBtn.Click();
+        }
+
+        [TearDown]
+        public void MyFinalize()
+        {
+            driver.Close();
+        }
+    }
 }
